@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60712393-20ee-4dc5-ad50-375c9f1c6754" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Helpers/PostServices.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Helpers/PostServices.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +41,7 @@
       <option name="presentableId" value="Default" />
       <updated>1694089290761</updated>
       <workItem from="1694089292002" duration="8571000" />
-      <workItem from="1694165564815" duration="5507000" />
+      <workItem from="1694165564815" duration="5982000" />
     </task>
     <servers />
   </component>
