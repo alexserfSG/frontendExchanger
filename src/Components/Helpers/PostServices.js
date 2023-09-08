@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default class PostServices {
 
-
-    static API_URL = process.env.REACT_APP_API_URL || '/libs/react.php';
+    // process.env.REACT_APP_API_URL
+    static API_URL = 'http://coinstest/libs/react.php';
 
     static async getPageData(page = '') {
 
