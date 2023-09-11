@@ -1,8 +1,8 @@
 import React from 'react';
 import Input from "./UIElements/Input";
 import PostServices from "../../Helpers/PostServices";
-import setCookie from './../../customHooks/setCookie';
-import getCookie from './../../customHooks/getCookie';
+//import setCookie from './../../customHooks/setCookie';
+//import getCookie from './../../customHooks/getCookie';
 
 
 const MainSectionExch = () => {
@@ -31,6 +31,8 @@ const MainSectionExch = () => {
     const [minFromSum,setMinFromSum] = React.useState(null);
     const [maxFromSum,setMaxFromSum] = React.useState(null);
     const [maxToSum,setMaxToSum] = React.useState(null);
+
+    const [getTitles, setGetTitles] = React.useState();
 
     // Проверка на фиат для округления
     const [isFiat, setIsFiat] = React.useState(false);
@@ -184,9 +186,10 @@ const MainSectionExch = () => {
 
     React.useEffect(() => {
 
-        if (getCookie('fc') && getCookie('tc')) {
-            setPostUrl('/exchanger/' + getCookie('fc') + '-' + getCookie('tc') + '/');
-        }
+        if (!getTitles) setGetTitles(titles);
+        // if (getCookie('fc') && getCookie('tc')) {
+        //     setPostUrl('/exchanger/' + getCookie('fc') + '-' + getCookie('tc') + '/');
+        // }
         if (!postUrl) setPostUrl('index');
 
         if (!Object.keys(data).length) {
@@ -201,17 +204,11 @@ const MainSectionExch = () => {
         if (!rateExch) setRateExch(rate().exch);
     });
 
-    const inputClick = () => {
-
-    }
-
-    const param = () => {
-        console.log(data);
-    }
+    console.log(document.cookie);
 
     const chooseFromCurrency = (e) => {
         setFromCurrency(e.target.id);
-        setCookie('fc',e.target.id);
+        //setCookie('fc',e.target.id);
         let url = '/exchanger/' + e.target.id + '-' + toCurrency + '/';
         setPostUrl(url);
         getPost(url).then(r => {});
@@ -219,7 +216,7 @@ const MainSectionExch = () => {
 
     const chooseToCurrency = (e) => {
         setToCurrency(e.target.id);
-        setCookie('tc',e.target.id);
+        //setCookie('tc',e.target.id);
         let url = '/exchanger/' + fromCurrency + '-' + e.target.id + '/';
         setPostUrl(url);
         getPost(url).then(r => {});
@@ -229,14 +226,15 @@ const MainSectionExch = () => {
         if (!fromCurrency && !toCurrency) {
             setFromCurrency(currencyAll().from.defaultCode);
             setToCurrency(currencyAll().to.defaultCode);
-            setCookie('fc',currencyAll().from.defaultCode);
-            setCookie('tc',currencyAll().to.defaultCode);
-            setCookie('titles',JSON.stringify(titles));
+            //setCookie('fc',currencyAll().from.defaultCode);
+            //setCookie('tc',currencyAll().to.defaultCode);
+            //setCookie('titles',JSON.stringify(titles));
         }
         setFromCurs(currencyAll().from.curs);
         setToCurs(currencyAll().to.curs);
         setToCurrency(currencyAll().to.defaultCode);
-        setCookie('tc', currencyAll().to.defaultCode);
+        setGetTitles(titles);
+        //setCookie('tc', currencyAll().to.defaultCode);
         setFromPrice(rate().fromValue);
         setFromPriceCur(rate().fromCur);
         setToPrice(rate().toValue);
@@ -283,14 +281,13 @@ const MainSectionExch = () => {
                                 factorFrom = {curProp[fromCurrency]}
                                 currencyTo = {toCurrency}
                                 factorTo = {curProp[toCurrency]}
-                                titles = {getCookie('titles')}
+                                titles = {getTitles}
                                 chooseFrom = {chooseFromCurrency}
                                 chooseTo = {chooseToCurrency}
                                 sumFromMin = {minFromSum}
                                 sumFromMax = {maxFromSum}
                                 sumToMax = {maxToSum}
                                 rate = {rateExch}
-                                onClick = {inputClick}
                                 isFiat = {isFiat}
                             />
 
@@ -314,7 +311,7 @@ const MainSectionExch = () => {
                     </div>
 
                     <div className=" i_ex_btn">
-                        <button className="yellow_btn" type="button" onClick={param}>Обменять</button>
+                        <button className="yellow_btn" type="button">Обменять</button>
                     </div>
                 </form>
 

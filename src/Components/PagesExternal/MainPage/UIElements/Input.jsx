@@ -31,7 +31,9 @@ const Input = ({
     const [focusInputFrom, setFocusInputFrom] = React.useState(false);
     const [focusInputTo, setFocusInputTo] = React.useState(false);
 
-    let curNames = titles? JSON.parse(titles) : [];
+    //let curNames = titles? JSON.parse(titles) : [];
+    //console.log(titles);
+    let curNames = titles? titles : [];
 
     React.useEffect(() => {
         if ((inputValueFrom - (0.0001 * inputValueFrom)) > sumFromMax) changeInputSum(sumFromMax, 'fs');
