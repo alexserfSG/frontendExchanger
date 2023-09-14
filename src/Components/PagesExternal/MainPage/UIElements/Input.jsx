@@ -152,7 +152,7 @@ const Input = ({
                                             {curNames[code]}
                                         </p>
                                     </div>
-                                    <p id = {code}>1 = 43 238 RUB</p>
+                                    {/*<p id = {code}>1 = 43 238 RUB</p>*/}
                                 </div>
                             ))
                         }
@@ -229,7 +229,7 @@ const Input = ({
                                             {curNames[code]}
                                         </p>
                                     </div>
-                                    <p id = {code}>1 = 43 238 RUB</p>
+                                    {/*<p id = {code}>1 = 43 238 RUB</p>*/}
                                 </div>
                             ))
                         }

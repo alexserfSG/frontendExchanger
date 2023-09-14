@@ -19,7 +19,7 @@ export const Login = () => {
         fData.append('email', values.email);
         await PostServices.sendForm(fData)
             .then(res => {
-                console.log(res)
+                //console.log(res)
                 if (res.action !== ERROR) dispatch(pageConfirm(values.email))
                 else setError(res.message);
             })

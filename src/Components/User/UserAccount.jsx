@@ -1,9 +1,6 @@
 import React from "react";
-import History from "./History";
-import Favourites from "./Favourites";
-import VerifyCard from "./VerifyCard";
-import PartnerUser from "./PartnerUser";
-import PartnerUserWithdraw from "./PartnerUserWithdraw";
+import History from "./PagesInternal/History";
+
 
 const UserAccount = () => {
 

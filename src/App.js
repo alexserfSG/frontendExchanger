@@ -12,11 +12,15 @@ import NotFound from "./Components/PagesExternal/NotFound";
 import Partner from "./Components/PagesExternal/Partner";
 import Rules from "./Components/PagesExternal/Rules";
 import {Sign} from "./Components/PagesExternal/SignPage/Sign";
-import UserAccount from "./Components/User/PagesInternal/UserAccount";
-
+import UserAccount from "./Components/User/UserAccount";
+import {useSelector} from "react-redux";
 
 
 function App() {
+
+    const isUser = useSelector(state => state.user.accessToken);
+    console.log(isUser);
+
   return (
     <div className="App">
             <BrowserRouter>

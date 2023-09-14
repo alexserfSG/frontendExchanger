@@ -1,11 +1,14 @@
 import React from "react";
-import {pageConfirm, pageLogin} from "../../../redux/slices/signSlice";
+import {pageLogin} from "../../../redux/slices/signSlice";
 import {useDispatch} from "react-redux";
 import {validationConfirm} from "../../Helpers/validationConfirmYup";
 import PostServices from "../../Helpers/PostServices";
 import {SIGN_CONFIRM, SIGN_PAGE} from "./Constants";
 import { Formik, Form, Field } from "formik";
 import { Navigate, useNavigate } from 'react-router-dom';
+import {setUser} from "../../../redux/slices/userSlice";
+import getCookie from "../../customHooks/getCookie";
+import {ACCESS_TOKEN} from "../../User/const";
 
 export const Confirm = ({email}) => {
 
@@ -22,7 +25,8 @@ export const Confirm = ({email}) => {
         fData.append('email', email);
         await PostServices.sendForm(fData)
             .then(res => {
-                console.log(res)
+                if (res.isUser) dispatch(setUser(getCookie(ACCESS_TOKEN)));
+
                 if (res.redirect) {
                     //console.log('Показываем редирект ' + res.redirect);
                     setRedirect(res.redirect);
@@ -35,6 +39,8 @@ export const Confirm = ({email}) => {
     React.useEffect(() => {
         if (redirect) navigate("/" + redirect + "/");
     }, [ redirect ]);
+
+
 
     return (
         <>

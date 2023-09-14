@@ -204,8 +204,6 @@ const MainSectionExch = () => {
         if (!rateExch) setRateExch(rate().exch);
     });
 
-    console.log(document.cookie);
-
     const chooseFromCurrency = (e) => {
         setFromCurrency(e.target.id);
         //setCookie('fc',e.target.id);
@@ -311,7 +309,7 @@ const MainSectionExch = () => {
                     </div>
 
                     <div className=" i_ex_btn">
-                        <button className="yellow_btn" type="button">Обменять</button>
+                        <button className="yellow_btn" type="button" onClick={()=>console.log(data)}>Обменять</button>
                     </div>
                 </form>
 

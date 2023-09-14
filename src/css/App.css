@@ -480,7 +480,8 @@ div.nav-client-div {
 .i_ex_f_els_b_u_div {
   position: relative;
   width: inherit;
-  max-width: 436px;
+  max-width: 236px;
+  margin-left: 210px;
 }
 
 #select_fc , #select_tc {
@@ -545,6 +546,7 @@ div.nav-client-div {
   width: inherit;
   min-height: 38px;
   cursor: pointer;
+  border-bottom: 1px solid #F3F6F6;
 }
 
 .i_ex_f_els_b_sd_option:hover {

@@ -1,6 +1,11 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import $ from 'jquery';
+import {useDispatch} from "react-redux";
+import {pageLogin} from "../redux/slices/signSlice";
+import UserMenu from "./User/UserMenu";
+
+
 import Logo from 'images/logo.svg';
 import BonusIcon from 'images/bonus_icon.svg';
 import FavoriteIcon from 'images/favorite_icon.svg';
@@ -9,9 +14,6 @@ import CardIcon from 'images/card_icon.svg';
 import LoginIcon from 'images/login_icon.svg';
 import ClientIcon from 'images/client.svg';
 import ArrowIcon from 'images/select_arrow.svg';
-import {useDispatch} from "react-redux";
-import {pageLogin} from "../redux/slices/signSlice";
-import UserMenu from "./User/UserMenu";
 
 
 export default function Header() {
@@ -34,7 +36,7 @@ export default function Header() {
         $('#client-mobmenu').toggleClass('none');
     }
 
-    return (
+    return (<>
         <header className="header">
 
             <div className="container">
@@ -173,31 +175,35 @@ export default function Header() {
                             </Link>
                         </div>
 
-                        <div id="nav-client" className="nav-client none">
-                            <div className="nav-client-div">
-                                <img className="nav-client-icon" src={ClientIcon} alt="Client" />
-                                <img src={ArrowIcon} alt="Menu" />
-                            </div>
-                        </div>
-
-                        <div id="client-menu" className="client-menu none">
-                            <UserMenu />
-                        </div>
-
-                        <div className="nav-login" onClick={() => dispatch(pageLogin())}>
-                            <Link to="/sign/" title="Вход в личный кабинет">
-                                <div className="nav-bonus-img">
-                                    <img src={LoginIcon} alt="Bonus icon"/>
+                        {
+                            isClient ? (<>
+                                <div id="nav-client" className="nav-client">
+                                    <div className="nav-client-div">
+                                        <img className="nav-client-icon" src={ClientIcon} alt="Client" />
+                                        <img src={ArrowIcon} alt="Menu" />
+                                    </div>
                                 </div>
-                                <div className="nav-bonus-text">Войти</div>
-                            </Link>
-                        </div>
+
+                                <div id="client-menu" className="client-menu none">
+                                    <UserMenu />
+                                </div>
+                            </>) : (
+                                <div className="nav-login" onClick={() => dispatch(pageLogin())}>
+                                    <Link to="/sign/" title="Вход в личный кабинет">
+                                        <div className="nav-bonus-img">
+                                        <img src={LoginIcon} alt="Bonus icon"/>
+                                        </div>
+                                        <div className="nav-bonus-text">Войти</div>
+                                    </Link>
+                                </div>
+                            )
+                        }
 
                     </div>
                 </div>
             </div>
         </header>
-    );
+    </>);
 
 }
 

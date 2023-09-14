@@ -10,7 +10,7 @@ export default class PostServices {
         try {
             const res = await axios({
                 url: this.API_URL,
-                //credentials: true,
+                credentials: true,
                 method: 'post',
                 httpOnly: true,
                 data: {
