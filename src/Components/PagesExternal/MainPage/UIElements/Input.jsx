@@ -117,7 +117,7 @@ const Input = ({
                         ref={refFrom}
                     >
 
-                        <img src = {`images/logo_${currencyFrom}.svg`} alt = {curNames[currencyFrom]}/>
+                        <img src = {currencyFrom ? `images/logo_${currencyFrom}.svg` : ''} alt = {curNames[currencyFrom]}/>
                         <p className="i_ex_f_els_b_u_select_coin">{
                             curNames[currencyFrom]
                         }</p>
@@ -143,9 +143,9 @@ const Input = ({
                                 >
                                     <div id = {code} className="i_ex_f_els_b_sd_o_cur">
 
-                                        <img src={`images/logo_${code}.svg`}
-                                             alt = {curNames[code]}
-                                             id = {code}
+                                         <img src={code ? `images/logo_${code}.svg` : ''}
+                                              alt={curNames[code]}
+                                              id={code}
                                         />
 
                                         <p id = {code}>
@@ -194,7 +194,7 @@ const Input = ({
                         onClick = {() => setOpenTo(!openTo)}
                         ref={refTo}
                     >
-                        <img src = {`images/logo_${currencyTo}.svg`} alt = {curNames[currencyTo]}/>
+                        <img src = {currencyTo ? `images/logo_${currencyTo}.svg` : ''} alt = {curNames[currencyTo]}/>
                         <p className="i_ex_f_els_b_u_select_coin">{
                             curNames[currencyTo]
                         }</p>

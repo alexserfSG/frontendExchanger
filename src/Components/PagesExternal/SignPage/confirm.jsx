@@ -5,10 +5,8 @@ import {validationConfirm} from "../../Helpers/validationConfirmYup";
 import PostServices from "../../Helpers/PostServices";
 import {SIGN_CONFIRM, SIGN_PAGE} from "./Constants";
 import { Formik, Form, Field } from "formik";
-import { Navigate, useNavigate } from 'react-router-dom';
-import {setUser} from "../../../redux/slices/userSlice";
-import getCookie from "../../customHooks/getCookie";
-import {ACCESS_TOKEN} from "../../User/const";
+import { Navigate , useNavigate } from 'react-router-dom';
+
 
 export const Confirm = ({email}) => {
 
@@ -25,12 +23,14 @@ export const Confirm = ({email}) => {
         fData.append('email', email);
         await PostServices.sendForm(fData)
             .then(res => {
-                if (res.isUser) dispatch(setUser(getCookie(ACCESS_TOKEN)));
-
-                if (res.redirect) {
-                    //console.log('Показываем редирект ' + res.redirect);
+                //console.log(res);
+                if (res.redirect && res.userEmail) {
+                    // dispatch(setUser({accessToken: res.accessToken, userId: res.userId }));
+                    localStorage.setItem("userEmail", res.userEmail)
                     setRedirect(res.redirect);
                 }
+                // else dispatch(loqOut());
+
                 if (res.error) setErrorCode(res.error);
             })
             .catch(error => console.log(error))

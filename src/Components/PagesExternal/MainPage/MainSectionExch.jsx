@@ -263,7 +263,7 @@ const MainSectionExch = () => {
 
                 <div className="i_ex_rate">
                     <p>
-                        <img src = {`images/logo_${fromPriceCur}.svg`} alt = {fromPriceCur}/> {Number(fromPrice).toFixed(curProp[fromCurrency])} = {Number(toPrice).toFixed(curProp[toCurrency])} <img src = {`images/logo_${toPriceCur}.svg`} alt = {toPriceCur}/>
+                        <img src = {fromPriceCur ? `images/logo_${fromPriceCur}.svg` : ''} alt = {fromPriceCur}/> {Number(fromPrice).toFixed(curProp[fromCurrency])} = {Number(toPrice).toFixed(curProp[toCurrency])} <img src = {toPriceCur ? `images/logo_${toPriceCur}.svg` : ''} alt = {toPriceCur}/>
                     </p>
                     {/*<span className="timer">{rateTime}</span>*/}
                 </div>

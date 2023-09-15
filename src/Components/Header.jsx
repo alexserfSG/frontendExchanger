@@ -1,11 +1,3 @@
-import React from 'react';
-import {Link} from "react-router-dom";
-import $ from 'jquery';
-import {useDispatch} from "react-redux";
-import {pageLogin} from "../redux/slices/signSlice";
-import UserMenu from "./User/UserMenu";
-
-
 import Logo from 'images/logo.svg';
 import BonusIcon from 'images/bonus_icon.svg';
 import FavoriteIcon from 'images/favorite_icon.svg';
@@ -15,12 +7,25 @@ import LoginIcon from 'images/login_icon.svg';
 import ClientIcon from 'images/client.svg';
 import ArrowIcon from 'images/select_arrow.svg';
 
+import React from 'react';
+import {Link} from "react-router-dom";
+import $ from 'jquery';
+import {useDispatch} from "react-redux";
+import {pageLogin} from "../redux/slices/signSlice";
+import UserMenu from "./User/UserMenu";
+import getCookie from "./customHooks/getCookie";
+import {ACCESS_TOKEN} from "./User/const";
+
 
 export default function Header() {
     const projectName = "Coinschest";
     const [openSandwich, setOpenSandwich] = React.useState(false);
-    const [isClient, setIsClient] = React.useState(true);
+    const [isClient, setIsClient] = React.useState(!!(localStorage.getItem('userEmail') && getCookie(ACCESS_TOKEN)));
     const dispatch = useDispatch()
+
+    React.useEffect(() => {
+        if (localStorage.getItem('userEmail') && getCookie(ACCESS_TOKEN)) setIsClient(true);
+    }, [isClient]);
 
     React.useEffect(() => {
         if (openSandwich) {
